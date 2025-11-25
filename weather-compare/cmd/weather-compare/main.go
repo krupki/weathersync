@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	cfg, err := loadCities("config/cities.yaml")
+	cfg, err := loadCities("../../config/cities.yaml")
 	if err != nil {
 		log.Fatalf("Error loading cities: %v", err)
 	}
