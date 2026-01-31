@@ -19,22 +19,26 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 ### Setting Up Your Development Environment
 
 1. **Fork the repository**
+
    ```bash
    # Click "Fork" on the GitHub repository
    ```
 
 2. **Clone your fork**
+
    ```bash
    git clone https://github.com/YOUR-USERNAME/weathersync.git
    cd weathersync
    ```
 
 3. **Add upstream remote**
+
    ```bash
    git remote add upstream https://github.com/krupki/weathersync.git
    ```
 
 4. **Create a development branch**
+
    ```bash
    git checkout -b feature/your-feature-name
    # or
@@ -42,6 +46,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
    ```
 
 5. **Install dependencies**
+
    ```bash
    cd weather-compare
    go mod download
@@ -56,6 +61,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 - Follow [Effective Go](https://golang.org/doc/effective_go) guidelines
 - Run `go fmt` on all Go files before committing
 - Use `golangci-lint` for linting:
+
   ```bash
   golangci-lint run ./...
   ```
@@ -64,7 +70,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 
 Write clear, descriptive commit messages:
 
-```
+```text
 feat: add caching layer for API responses
 fix: handle nil pointer in weather comparison
 docs: update README with new examples
@@ -72,6 +78,7 @@ test: add unit tests for fetcher package
 ```
 
 Use these prefixes:
+
 - `feat:` - New feature
 - `fix:` - Bug fix
 - `docs:` - Documentation
@@ -89,6 +96,7 @@ go test ./...
 ```
 
 Write tests for new features:
+
 ```bash
 # Add tests to the same package
 # Example: internal/fetcher/fetcher_test.go
@@ -97,6 +105,7 @@ Write tests for new features:
 ### Documentation
 
 - Add doc comments to all public functions:
+
   ```go
   // FetchWeatherData fetches weather information for a given city.
   // It returns a WeatherResult with current temperature and fetch duration.
@@ -111,12 +120,14 @@ Write tests for new features:
 ## Submitting a Pull Request
 
 1. **Update your branch**
+
    ```bash
    git fetch upstream
    git rebase upstream/main
    ```
 
 2. **Push to your fork**
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -130,6 +141,7 @@ Write tests for new features:
      - Screenshots/examples if applicable
 
 4. **PR Description Template**
+
    ```markdown
    ## Description
    Brief description of the changes.
@@ -164,18 +176,21 @@ Write tests for new features:
 ## Areas for Contribution
 
 ### Easy (Great for Beginners)
+
 - [ ] Add more cities to `config/cities.yaml`
 - [ ] Improve documentation
 - [ ] Fix typos in comments/docs
 - [ ] Add examples
 
 ### Medium
+
 - [ ] Add unit tests for existing functions
 - [ ] Improve error handling
 - [ ] Add configuration validation
 - [ ] Create a Makefile for common tasks
 
 ### Advanced
+
 - [ ] Implement retry logic with exponential backoff
 - [ ] Add database storage layer
 - [ ] Create REST API endpoint
