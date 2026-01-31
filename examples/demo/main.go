@@ -12,14 +12,14 @@ import (
 
 func main() {
 	fmt.Println(" WeatherSync Library Demo")
-	fmt.Println("================================\n")
+	fmt.Println("================================")
 
 	// STEP 1: Create a client
 	fmt.Println("Step 1: Creating weathersync client...")
 	client := weathersync.New(
 		weathersync.WithTimeout(5 * time.Second),
 	)
-	fmt.Println("Client created!\n")
+	fmt.Println("Client created!")
 
 	// STEP 2: Define locations (input data)
 	fmt.Println("Step 2: Defining locations...")
