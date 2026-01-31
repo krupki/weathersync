@@ -1,3 +1,5 @@
+// Package fetcher provides functionality for retrieving weather data
+// from external weather API providers.
 package fetcher
 
 import (
@@ -9,6 +11,20 @@ import (
 	"weather-compare/internal/models"
 )
 
+// FetchWeatherData retrieves current weather information for a specified city location.
+// It fetches data from the Open-Meteo API using the provided coordinates and measures
+// the fetch duration for performance monitoring.
+//
+// Parameters:
+//   - city: the name of the city for result labeling
+//   - lat: latitude coordinate of the location
+//   - lon: longitude coordinate of the location
+//
+// Returns:
+//   - models.WeatherResult containing temperature and performance metrics
+//   - error if the HTTP request fails, API returns non-200 status, or JSON parsing fails
+//
+// The function always populates FetchDurationSeconds in the result, even on errors.
 func FetchWeatherData(city string, lat float64, lon float64) (models.WeatherResult, error) {
 	url := fmt.Sprintf("https://api.open-meteo.com/v1/forecast?latitude=%f&longitude=%f&hourly=temperature_2m&forecast_hours=1", lat, lon)
 	start := time.Now()

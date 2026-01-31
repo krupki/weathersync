@@ -1,3 +1,14 @@
+// Package main implements a concurrent weather data aggregator that fetches
+// and compares real-time weather information across multiple continents.
+//
+// The application demonstrates production-level Go patterns including:
+//   - Concurrent data fetching using goroutines and channels
+//   - Per-continent worker isolation for better resource utilization
+//   - Configuration-driven city management via YAML
+//   - Performance tracking with latency measurements
+//
+// Weather data is fetched in parallel for all cities, grouped by continent,
+// with comprehensive error handling and performance metrics.
 package main
 
 import (
@@ -78,6 +89,15 @@ func main() {
 	fmt.Println(comparisonSummary)
 }
 
+// loadCities reads and parses the YAML configuration file containing city definitions.
+// It returns a structure with continents and their associated cities.
+//
+// Parameters:
+//   - filePath: path to the YAML configuration file
+//
+// Returns:
+//   - A struct containing continents and their cities
+//   - error if file reading or YAML parsing fails
 func loadCities(filePath string) (struct {
 	Continents []struct {
 		Name   string        `yaml:"name"`

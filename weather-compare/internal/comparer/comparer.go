@@ -1,3 +1,5 @@
+// Package comparer provides functionality for analyzing and comparing
+// weather data across multiple cities and continents.
 package comparer
 
 import (
@@ -9,6 +11,20 @@ import (
 	"weather-compare/internal/models"
 )
 
+// CompareWeatherData analyzes weather results and generates a comprehensive summary report.
+// It groups data by continent and calculates statistics including average, minimum, and maximum
+// temperatures, as well as fetch performance metrics.
+//
+// Parameters:
+//   - weatherData: slice of weather results from multiple cities
+//   - contDurations: map of continent names to their total fetch wall time
+//
+// Returns:
+//   - A formatted string containing the complete comparison summary with per-continent
+//     statistics, performance metrics, and per-city results.
+//
+// The report includes temperature statistics (avg, min, max), fetch timing metrics,
+// and individual city results with error handling.
 func CompareWeatherData(weatherData []models.WeatherResult, contDurations map[string]time.Duration) string {
 	if len(weatherData) == 0 {
 		return "No weather data to compare."
