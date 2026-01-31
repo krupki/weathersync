@@ -211,4 +211,4 @@ Write tests for new features:
 
 By contributing to WeatherSync, you agree that your contributions will be licensed under its MIT License.
 
-Thank you for contributing! 🚀
+Thank you for contributing!
