@@ -28,18 +28,18 @@ func main() {
 		},
 	}
 
-	fmt.Println("🌤️  Detailed Weather Report")
-	fmt.Println("============================\n")
+	fmt.Println("Detailed Weather Report")
+	fmt.Println("============================")
 
 	results := client.FetchMultiple(context.Background(), locations)
 
 	for _, weather := range results {
 		if weather.Error != nil {
-			fmt.Printf("❌ %s: %v\n", weather.Location.Name, weather.Error)
+			fmt.Printf("%s: %v\n", weather.Location.Name, weather.Error)
 			continue
 		}
 
-		fmt.Printf("📍 %s\n", weather.Location.Name)
+		fmt.Printf("%s\n", weather.Location.Name)
 		fmt.Printf("   Temperature:        %.1f°C\n", weather.Temperature)
 		fmt.Printf("   Feels Like:          %.1f°C\n", weather.ApparentTemperature)
 		fmt.Printf("   Humidity:            %.0f%%\n", weather.Humidity)
