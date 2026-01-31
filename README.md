@@ -20,15 +20,29 @@ The application fetches weather data from multiple cities across different conti
 
 ## Key Features
 
-| Feature | Description |
+### Concurrent Fetching
 
-|---------|-------------|
-| **Concurrent Fetching** | Goroutine-based parallel requests with WaitGroups for synchronization |
-| **Per-Continent Workers** | Isolates continent-level data processing with independent performance tracking |
-| **Configuration-Driven** | YAML-based city configuration for easy scaling and maintenance |
-| **Real-time Performance Metrics** | Tracks fetch duration per request and continent-level latency |
-| **Robust Error Handling** | Graceful error propagation without blocking other concurrent operations |
-| **Structured Data Models** | Type-safe JSON/YAML serialization for API responses and config |
+Goroutine-based parallel requests with WaitGroups for synchronization
+
+### Per-Continent Workers
+
+Isolates continent-level data processing with independent performance tracking
+
+### Configuration-Driven
+
+YAML-based city configuration for easy scaling and maintenance
+
+### Real-time Performance Metrics
+
+Tracks fetch duration per request and continent-level latency
+
+### Robust Error Handling
+
+Graceful error propagation without blocking other concurrent operations
+
+### Structured Data Models
+
+Type-safe JSON/YAML serialization for API responses and config
 
 ---
 
