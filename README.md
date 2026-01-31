@@ -162,9 +162,35 @@ weathersync/
 ├── examples/              # Usage examples
 │   ├── simple/            # Basic single fetch
 │   ├── concurrent/        # Multiple concurrent fetches
+│   ├── demo/              # Full demo
+│   ├── real-cities/       # Real weather data
 │   └── with-context/      # Context usage
 └── config/
     └── cities.yaml        # Sample city configuration
+```
+
+### Architecture Diagram
+
+```mermaid
+graph TB
+    A["User Code"] -->|"import weathersync"| B["Public API"]
+    B -->|"Location"| C["Client"]
+    C -->|"FetchWeather"| D["HTTP Request"]
+    D -->|"GET /forecast"| E["Open-Meteo API"]
+    E -->|"JSON Response"| F["Parse & Process"]
+    F -->|"WeatherData"| A
+    
+    C -->|"FetchMultiple"| G["Goroutines"]
+    G -->|"Parallel Requests"| D
+    
+    C -.->|"Configuration"| H["Options Pattern"]
+    H -->|"WithTimeout"| C
+    H -->|"WithHTTPClient"| C
+    
+    style A fill:#e1f5ff
+    style B fill:#fff9c4
+    style C fill:#f3e5f5
+    style E fill:#c8e6c9
 ```
 
 ---
