@@ -71,21 +71,27 @@ go get github.com/krupki/weathersync
 ## Key Features
 
 ### Concurrent Fetching
+
 Goroutine-based parallel requests – fetch multiple locations simultaneously
 
 ### Context Support
+
 Built-in timeout and cancellation support using Go's context package
 
 ### Flexible Configuration
+
 Options pattern for customizing HTTP client, timeouts, and API endpoints
 
 ### Performance Metrics
+
 Automatic tracking of fetch duration for every request
 
 ### Error Handling
+
 Graceful error handling – one failed request doesn't affect others
 
 ### Simple API
+
 Minimal boilerplate – just create a client and fetch
 
 ---
@@ -277,7 +283,7 @@ go run cmd/weathersync/main.go
 - Go 1.18+
 - Weather API credentials (configured in your environment or config)
 
-### Installation
+### Installation standalone
 
 ```bash
 git clone https://github.com/krupki/weathersync.git
@@ -308,25 +314,25 @@ WeatherSync is built for scale:
 
 This library demonstrates **production-level Go engineering** used by companies like **Uber**, **Cloudflare**, and **Docker**:
 
-**Concurrent Programming Mastery**
+### Concurrent Programming Mastery
 
 - Goroutines, channels, and WaitGroups used correctly
 - Race-condition free design
 - Proper context propagation
 
-**Library Design Best Practices**
+### Library Design Best Practices
 
 - Public API with Options pattern
 - Zero breaking changes guarantee
 - Minimal dependencies
 
-**Real-World Skills**
+### Real-World Skills
 
 - HTTP API integration with error handling
 - Performance metrics and monitoring
 - Clean architecture with separation of concerns
 
-**Go Idioms & Standards**
+### Go Idioms & Standards
 
 - Follows Effective Go guidelines
 - Comprehensive documentation
@@ -338,9 +344,7 @@ This library demonstrates **production-level Go engineering** used by companies 
 
 - [ ] Caching layer with TTL for API responses
 
-## Future Enhancements
-
-Potential improvements for contributors:
+## Potential improvements for contributors
 
 - [ ] Unit tests with mocked HTTP responses
 - [ ] Retry logic with exponential backoff
