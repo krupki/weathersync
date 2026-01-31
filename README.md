@@ -7,6 +7,7 @@
 ## Project Overview
 
 **WeatherSync** is a sophisticated weather data aggregation system built in Go that demonstrates:
+
 - **Concurrent programming** with goroutines and channels
 - **Efficient multi-level parallelism** (per-continent and per-city workers)
 - **Real-world API integration** with weather data providers
@@ -20,6 +21,7 @@ The application fetches weather data from multiple cities across different conti
 ## Key Features
 
 | Feature | Description |
+
 |---------|-------------|
 | **Concurrent Fetching** | Goroutine-based parallel requests with WaitGroups for synchronization |
 | **Per-Continent Workers** | Isolates continent-level data processing with independent performance tracking |
@@ -32,7 +34,7 @@ The application fetches weather data from multiple cities across different conti
 
 ## Architecture
 
-```
+```bash
 weather-compare/
 ├── cmd/weather-compare/      # Application entrypoint
 │   └── main.go              # Orchestrates concurrent fetching & reporting
@@ -48,6 +50,7 @@ weather-compare/
 ```
 
 ### Design Patterns Applied
+
 - **Separation of Concerns**: Fetching, comparison, and main logic isolated in distinct packages
 - **Channel-Based Communication**: Safe data passing between goroutines via channels
 - **Configuration-Driven Setup**: Externalized config for easy modifications without code changes
@@ -67,6 +70,7 @@ weather-compare/
 ## Technical Implementation
 
 ### Concurrent Goroutine Pattern
+
 ```go
 for _, city := range cont.Cities {
     go func(ct models.City) {
@@ -77,11 +81,13 @@ for _, city := range cont.Cities {
 ```
 
 ### Channel-Based Result Aggregation
+
 - Results collected via buffered channels
 - Prevents goroutine blocking and ensures all requests complete
 - Enables safe concurrent reads across the application
 
 ### Configuration Management
+
 - YAML-based configuration with structured unmarshaling
 - Supports unlimited cities across multiple continents
 - Easy to extend without code modifications
@@ -91,7 +97,8 @@ for _, city := range cont.Cities {
 ## Getting Started
 
 ### Prerequisites
-- Go 1.18+ 
+
+- Go 1.18+
 - Weather API credentials (configured in your environment or config)
 
 ### Installation
@@ -125,6 +132,7 @@ continents:
 ## Output Example
 
 The application generates detailed performance reports:
+
 - Per-city weather data with fetch latency
 - Per-continent aggregated execution times
 - Error tracking with informative logging
@@ -144,6 +152,7 @@ The application generates detailed performance reports:
 ## Scalability
 
 This project demonstrates how to build scalable concurrent systems:
+
 - **Horizontal scaling**: Add more cities/continents without code changes
 - **Efficient resource usage**: Goroutines are lightweight (~2KB each)
 - **Buffered channels**: Prevents goroutine starvation with proper buffer sizing
@@ -154,6 +163,7 @@ This project demonstrates how to build scalable concurrent systems:
 ## Why This Matters
 
 This project showcases **production-level Go patterns** used in real-world systems:
+
 - **Uber**, **CloudFlare**, and **Docker** use similar concurrent patterns
 - Demonstrates understanding of **concurrency primitives** (goroutines, channels, WaitGroups)
 - **API integration** skills with error handling and retries
@@ -194,7 +204,7 @@ Built by Krupki as a demonstration of professional Go development practices.
 ## Learning Resources
 
 This project demonstrates:
+
 - [Effective Go - Concurrency](https://golang.org/doc/effective_go#concurrency)
 - [Go Channels Best Practices](https://go.dev/blog/pipelines)
 - [Configuration Management Patterns](https://12factor.net/)
-
