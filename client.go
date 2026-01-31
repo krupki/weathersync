@@ -90,7 +90,7 @@ func New(opts ...Option) *Client {
 //   - *WeatherData containing temperature and metadata
 //   - error if the request fails or data is invalid
 func (c *Client) FetchWeather(ctx context.Context, location Location) (*WeatherData, error) {
-	url := fmt.Sprintf("%s/v1/forecast?latitude=%f&longitude=%f&current=temperature_2m",
+	url := fmt.Sprintf("%s/v1/forecast?latitude=%f&longitude=%f&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,cloud_cover,visibility,pressure_msl",
 		c.apiURL, location.Latitude, location.Longitude)
 
 	start := time.Now()
@@ -112,7 +112,17 @@ func (c *Client) FetchWeather(ctx context.Context, location Location) (*WeatherD
 
 	var apiResp struct {
 		Current struct {
-			Temperature2M float64 `json:"temperature_2m"`
+			Temperature2M       float64 `json:"temperature_2m"`
+			ApparentTemperature float64 `json:"apparent_temperature"`
+			RelativeHumidity2M  float64 `json:"relative_humidity_2m"`
+			Precipitation       float64 `json:"precipitation"`
+			WeatherCode         int     `json:"weather_code"`
+			WindSpeed10M        float64 `json:"wind_speed_10m"`
+			WindDirection10M    float64 `json:"wind_direction_10m"`
+			WindGusts10M        float64 `json:"wind_gusts_10m"`
+			CloudCover          float64 `json:"cloud_cover"`
+			Visibility          float64 `json:"visibility"`
+			PressureMsl         float64 `json:"pressure_msl"`
 		} `json:"current"`
 	}
 
@@ -121,10 +131,20 @@ func (c *Client) FetchWeather(ctx context.Context, location Location) (*WeatherD
 	}
 
 	return &WeatherData{
-		Location:      location,
-		Temperature:   apiResp.Current.Temperature2M,
-		FetchDuration: time.Since(start),
-		Timestamp:     time.Now(),
+		Location:            location,
+		Temperature:         apiResp.Current.Temperature2M,
+		ApparentTemperature: apiResp.Current.ApparentTemperature,
+		Humidity:            apiResp.Current.RelativeHumidity2M,
+		Precipitation:       apiResp.Current.Precipitation,
+		WeatherCode:         apiResp.Current.WeatherCode,
+		WindSpeed:           apiResp.Current.WindSpeed10M,
+		WindDirection:       apiResp.Current.WindDirection10M,
+		WindGusts:           apiResp.Current.WindGusts10M,
+		CloudCover:          apiResp.Current.CloudCover,
+		Visibility:          apiResp.Current.Visibility,
+		Pressure:            apiResp.Current.PressureMsl,
+		FetchDuration:       time.Since(start),
+		Timestamp:           time.Now(),
 	}, nil
 }
 
